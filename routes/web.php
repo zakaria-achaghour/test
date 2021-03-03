@@ -18,6 +18,8 @@ Route::get('/', function () {
 });
 
 Route::get('/admin','AdminController@login')->name('login');
+Route::get('/admin/dashboard','AdminController@dash')->name('dash');
+
 
 Auth::routes();
 
