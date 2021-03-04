@@ -16,11 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::group(function(){
 
-Route::get('/admin','AdminController@login')->name('login');
+});
+
+Route::match(['get','post'],'/login','AdminController@login')->name('login');
+Route::get('/logout','AdminController@logout')->name('logout');
+
 Route::get('/admin/dashboard','AdminController@dash')->name('dash');
 
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

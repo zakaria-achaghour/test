@@ -94,7 +94,7 @@
                    
                  <li class="nav-item dropdown">
                     <a id="navbarDropdow" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        zakaria <span class="caret"></span>
+                        {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
                   
 
@@ -110,7 +110,7 @@
                         <a class="dropdown-item" href="javascript:void(0)"><i
                                 class="ti-settings me-1 ms-1"></i> Account Setting</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="javascript:void(0)"><i
+                        <a class="dropdown-item" href="{{ route('logout') }}"><i
                                 class="fa fa-power-off me-1 ms-1"></i> Logout</a>
                         <div class="dropdown-divider"></div>
                         <div class="ps-4 p-10"><a href="javascript:void(0)"

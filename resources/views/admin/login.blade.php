@@ -23,29 +23,35 @@
 
 <body>
     <div class="main-wrapper">
-        <!-- ============================================================== -->
-        <!-- Preloader - style you can find in spinners.css -->
-        <!-- ============================================================== -->
-        <div class="preloader">
-            <div class="lds-ripple">
-                <div class="lds-pos"></div>
-                <div class="lds-pos"></div>
-            </div>
-        </div>
-        <!-- ============================================================== -->
-        <!-- Preloader - style you can find in spinners.css -->
-        <!-- ============================================================== -->
+       
+  
         <!-- ============================================================== -->
         <!-- Login box.scss -->
         <!-- ============================================================== -->
+       
         <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-dark">
             <div class="auth-box bg-dark border-top border-secondary">
+              
                 <div id="loginform">
                     <div class="text-center p-t-20 p-b-20">
                         <span class="db"><img src="assets/images/logo.png" alt="logo" /></span>
                     </div>
                     <!-- Form 
                     <form class="form-horizontal m-t-20" id="loginform" action="index.html">-->
+
+                         <!-- flash message -->
+
+                        <div class="container ">
+                            <div class="row ">
+                                <div class="col-md-12 mx-auto ">
+                                    
+                                        @include('partials.alerts')
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end flash message -->
+
                         <form class="form-horizontal m-t-20" id="loginform" method="POST" action="{{ route('login') }}">
                             @csrf
     
@@ -56,9 +62,9 @@
                                         <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
                                     </div>
                                    
-                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                        <input id="login" type="email" class="form-control @error('login') is-invalid @enderror" name="login" value="{{ old('login') }}" required autocomplete="login" autofocus>
         
-                                        @error('email')
+                                        @error('login')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -79,47 +85,47 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row border-top border-secondary">
+                       <!-- <div class="row border-top border-secondary">
                             <div class="col-12">
 
                                 <div class="form-group row mb-0">
                                     <div class="col-md-8 offset-md-4">
                                         <button type="submit" class="btn btn-primary">
-                                            {{ __('Login') }}
+                                            {__('Login') }}
                                         </button>
         
-                                        @if (Route::has('password.request'))
-                                            <a class="btn btn-link" href="{{ route('password.request') }}">
-                                                {{ __('Forgot Your Password?') }}
+                                        i (Route:has(password.request'))
+                                            <a class="btn btn-link" href="{ route('password.request') }}">
+                                                { __('Forgot Your Password?') }}
                                             </a>
-                                        @endif
+                                        endif
                                     </div>
-                                </div>
-                              <!--  <div class="form-group">
+                                </div>-->
+                                <div class="form-group">
                                     <div class="p-t-20">
                                         <button class="btn btn-info" id="to-recover" type="button"><i class="fa fa-lock m-r-5"></i> Lost password?</button>
                                         <button class="btn btn-success float-right" type="submit">Login</button>
                                     </div>
-                                </div>-->
+                                </div>
                             </div>
                         </div>
                     </form>
                 </div>
-                <div id="recoverform">
+            <!--     <div id="recoverform">
                     <div class="text-center">
                         <span class="text-white">Enter your e-mail address below and we will send you instructions how to recover a password.</span>
                     </div>
                     <div class="row m-t-20">
-                        <!-- Form -->
+                        Form --
                         <form class="col-12" action="index.html">
-                            <!-- email -->
+                            <-- email --
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text bg-danger text-white" id="basic-addon1"><i class="ti-email"></i></span>
                                 </div>
                                 <input type="text" class="form-control form-control-lg" placeholder="Email Address" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
-                            <!-- pwd -->
+                            !-- pwd --
                             <div class="row m-t-20 p-t-20 border-top border-secondary">
                                 <div class="col-12">
                                     <a class="btn btn-success" href="#" id="to-login" name="action">Back To Login</a>
@@ -130,7 +136,8 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
+    
         <!-- ============================================================== -->
         <!-- Login box.scss -->
         <!-- ============================================================== -->
