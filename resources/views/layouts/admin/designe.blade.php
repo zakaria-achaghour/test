@@ -153,7 +153,8 @@
     rules: {
         userName: {
             required: true,
-            minlength: 3
+            minlength: 3,
+            disabled:true
 
         },
         current_password: {
@@ -174,7 +175,8 @@
 
         email: {
              required: true,
-             email: true
+             email: true,
+             disabled:true
          },
 
          firstname: {
@@ -187,26 +189,6 @@
             }
     }
 });
-form.children("div").steps({
-        headerTag: "h3",
-        bodyTag: "section",
-        transitionEffect: "slideLeft",
-        onStepChanging: function(event, currentIndex, newIndex) {
-            form.validate().settings.ignore = ":disabled,:hidden";
-            return form.valid();
-        },
-        onFinishing: function(event, currentIndex) {
-            form.validate().settings.ignore = ":disabled";
-            return form.valid();
-        },
-        onFinished: function(event, currentIndex) {
-                
-            $("#account-form").submit();
- // Submit the form
-       
-        }
-    });
-
        
     </script>
 
