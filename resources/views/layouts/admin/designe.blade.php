@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords"
@@ -14,16 +15,15 @@
     <title>Matrix Admin Lite Free Versions Template by WrapPixel</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/favicon.png')}}">
-    <!-- Custom CSS -->
-    <link href="{{ asset('assets/libs/flot/css/float-chart.css')}}" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="{{ asset('dist/css/style.min.css')}}" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+   
+
+
+     <!-- Custom CSS -->
+     <link href="{{ asset('assets/libs/flot/css/float-chart.css')}}" rel="stylesheet">
+     <link href="{{ asset('assets/libs/jquery-steps/jquery.steps.css')}}" rel="stylesheet">
+     <link href="{{ asset('assets/libs/jquery-steps/steps.css')}}" rel="stylesheet">
+     <link href="{{ asset('dist/css/style.min.css')}}" rel="stylesheet">
+    
 </head>
 
 <body>
@@ -76,7 +76,9 @@
     <!-- ============================================================== -->
     <script src="{{ asset('assets/libs/jquery/dist/jquery.min.js') }}"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/popper.js/dist/umd/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
     <script src="{{ asset('assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js') }}"></script>
     <script src="{{ asset('assets/extra-libs/sparkline/sparkline.js') }}"></script>
     <!--Wave Effects -->
@@ -85,8 +87,14 @@
     <script src="{{ asset('dist/js/sidebarmenu.js') }}"></script>
     <!--Custom JavaScript -->
     <script src="{{ asset('dist/js/custom.min.js') }}"></script>
-    <!--This page JavaScript -->
-    <!-- <script src="../../dist/js/pages/dashboards/dashboard1.js') }}"></script> -->
+    <!-- this page js -->
+    <script src="{{ asset('assets/libs/jquery-steps/build/jquery.steps.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/jquery-validation/dist/jquery.validate.min.js') }}"></script>
+
+
+
+  <!--This page JavaScript -->
+    <!-- <script src="dist/js/pages/dashboards/dashboard1.js"></script> -->
     <!-- Charts js Files -->
     <script src="{{ asset('assets/libs/flot/excanvas.js') }}"></script>
     <script src="{{ asset('assets/libs/flot/jquery.flot.js') }}"></script>
@@ -96,6 +104,111 @@
     <script src="{{ asset('assets/libs/flot/jquery.flot.crosshair.js') }}"></script>
     <script src="{{ asset('assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js') }}"></script>
     <script src="{{ asset('dist/js/pages/chart/chart-page-init.js') }}"></script>
+
+
+
+    <script>
+      
+       $( document ).ready(function() {
+        $("#new_password").focus(function() {
+            var current_password = $("#current_password").val();
+            var token = $('meta[name="csrf-token"]').attr('content');
+            $.ajax({
+                url:"{{ route('checkPassword') }}",
+                method: "POST",
+                dataType: 'JSON',
+                data: {
+                    "_method": 'POST',
+                    "_token": token,
+                    "current_password": current_password,
+                 },
+              
+                success: function(response){
+                //   alert(response);
+                var result = $.trim(response);
+                    if(result === "true"){
+                        $("#pwdchk").html("<font color='green'>Current Password is correct</font>");
+                    }else{
+                        $("#pwdchk").html("<font color='red'>Current Password is incorrect</font>");
+                        
+                    }
+                },
+                error:function(){
+                    alert("Error");
+                }
+            });
+           
+         });         
+    });
+       
+          
+    
+
+  /* form validation settings profile */
+ var form = $("#account-form");
+ form.validate({
+    
+    errorPlacement: function errorPlacement(error, element) { element.before(error); },
+   
+    rules: {
+        userName: {
+            required: true,
+            minlength: 3
+
+        },
+        current_password: {
+            required: true,
+            minlength: 8
+
+        },
+        new_password: {
+            required: true,
+            minlength: 8
+
+        },
+
+        confirm_password: {
+            required: true,
+            equalTo: "#new_password"
+        },
+
+        email: {
+             required: true,
+             email: true
+         },
+
+         firstname: {
+             required: true,
+             minlength: 2
+            },
+         lastname: {
+             required: true,
+             minlength: 2
+            }
+    }
+});
+form.children("div").steps({
+        headerTag: "h3",
+        bodyTag: "section",
+        transitionEffect: "slideLeft",
+        onStepChanging: function(event, currentIndex, newIndex) {
+            form.validate().settings.ignore = ":disabled,:hidden";
+            return form.valid();
+        },
+        onFinishing: function(event, currentIndex) {
+            form.validate().settings.ignore = ":disabled";
+            return form.valid();
+        },
+        onFinished: function(event, currentIndex) {
+                
+            $("#account-form").submit();
+ // Submit the form
+       
+        }
+    });
+
+       
+    </script>
 
 </body>
 

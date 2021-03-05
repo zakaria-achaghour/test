@@ -107,7 +107,7 @@
                         <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email me-1 ms-1"></i>
                             Inbox</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="javascript:void(0)"><i
+                        <a class="dropdown-item" href="{{route('settings')}}"><i
                                 class="ti-settings me-1 ms-1"></i> Account Setting</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('logout') }}"><i
