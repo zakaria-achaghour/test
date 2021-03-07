@@ -25,10 +25,12 @@ Route::get('/admin/dashboard','AdminController@dash')->name('dash');
 
 
 Route::get('/admin/dashboard/settings','AdminController@settings')->name('settings');
-Route::patch('/admin/dashboard/settings','AdminController@profile_edit')->name('profile_edit');
+Route::put('/admin/dashboard/settings','AdminController@profile_edit')->name('profile_edit');
 
 Route::post('/admin/dashboard/check-pwd','AdminController@checkPassword')->name('checkPassword');
 
+Route::resource('/admin/dashboard/users','UserController')->except('destroy')->middleware(['can:admin.manage']);
+Route::post('/admin/dashboard/users/delete','UserController@destroy')->name('users.destroy')->middleware(['can:admin.manage']);
 
 
 

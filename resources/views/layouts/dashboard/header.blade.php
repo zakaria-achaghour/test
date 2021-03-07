@@ -1,6 +1,6 @@
 
-<header class="topbar" data-navbarbg="skin5">
-    <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+<header class="topbar mb-5" data-navbarbg="skin5">
+    <nav class="navbar top-navbar navbar-expand-md navbar-dark ">
         <div class="navbar-header" data-logobg="skin5">
             
             <!-- ============================================================== -->
@@ -8,17 +8,20 @@
             <!-- ============================================================== -->
             <a class="navbar-brand" href="index.html">
                 <!-- Logo icon -->
-                <b class="logo-icon ps-2">
+                <b class="logo-icon ps-2 mr-0 ml-0">
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
-                    <img src="{{ asset('assets/images/logo-icon.png') }}" alt="homepage" class="light-logo" />
+                    <img src="{{ asset('assets/images/MC Pharma.png') }}" style="width: 60px; height:60px;" alt="homepage" class="light-logo" />
 
                 </b>
                 <!--End Logo icon -->
                 <!-- Logo text -->
                 <span class="logo-text">
-                    <!-- dark Logo text -->
-                    <img src="{{ asset('assets/images/logo-text.png') }}" alt="homepage" class="light-logo" />
+                    <!-- dark Logo text 
+                    <img src="{ asset('assets/images/logo-text.png') }}" alt="homepage" class="light-logo" />
+-->
+                <img src="{{ asset('assets/images/mclogo.png') }}" alt="homepage" class="light-logo" />
+
 
                 </span>
                 <!-- Logo icon -->
@@ -94,18 +97,13 @@
                    
                  <li class="nav-item dropdown">
                     <a id="navbarDropdow" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }} <span class="caret"></span>
+                        {{ Auth::user()->username }} <i class="fas fa-arrow-down"></i> <span class="caret"></span>
                     </a>
                   
 
                     <div class="dropdown-menu dropdown-menu-right  user-dd animated" aria-labelledby="navbarDropdow">
 
-                        <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user me-1 ms-1"></i>
-                            My Profile</a>
-                        <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet me-1 ms-1"></i>
-                            My Balance</a>
-                        <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email me-1 ms-1"></i>
-                            Inbox</a>
+                     
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{route('settings')}}"><i
                                 class="ti-settings me-1 ms-1"></i> Account Setting</a>
@@ -113,8 +111,7 @@
                         <a class="dropdown-item" href="{{ route('logout') }}"><i
                                 class="fa fa-power-off me-1 ms-1"></i> Logout</a>
                         <div class="dropdown-divider"></div>
-                        <div class="ps-4 p-10"><a href="javascript:void(0)"
-                                class="btn btn-sm btn-success btn-rounded text-white">View Profile</a></div>
+                        
                     </div>
                 </li>
                 <!-- ============================================================== -->
