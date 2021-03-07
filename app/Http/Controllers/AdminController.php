@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -27,7 +28,7 @@ class AdminController extends Controller
         }
        
 
-        return view('admin.login');
+        return view('login');
     }
 
     public function logout(){
@@ -37,7 +38,7 @@ class AdminController extends Controller
     }
 
     public function dash(){
-        return view('admin.dashboard');
+        return view('dashboard');
     }
 
 
@@ -51,7 +52,7 @@ class AdminController extends Controller
 
     public function settings(){
         
-        return view('admin.settings',['user'=> Auth::user()]);
+        return view('settings',['user'=> Auth::user()]);
     }
 
     public function checkPassword(Request $request){
@@ -67,9 +68,23 @@ class AdminController extends Controller
         }
     }
 
-    public function profile_edit(Request $request){
-    
-        dd($request);
+    public function profile_edit(Request $request ){
+      
+      $user = User::findOrFail(Auth::id());
+        $data = $request->all();
+        $current_password = $data['current_password'];
+       
+        if(Hash::check($current_password,$user->password)){
+            if( $data['new_password'] === $data['confirm_password']){
+                $user->password = Hash::make($data['new_password']);
+                $user->save();
+               return redirect()->route('settings')->with(['success' => 'Password change successfuly']);
+            }
+            return redirect()->route('settings')->with(['error' => 'New password not equal to confirm password']);
+          
+        }
+        return redirect()->route('settings')->with(['error' => 'current password not correct']);
+
 
     }
     

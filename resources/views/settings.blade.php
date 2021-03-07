@@ -1,4 +1,4 @@
-@extends('layouts.admin.designe')
+@extends('layouts.dashboard.designe')
 
 @section('content')
 
@@ -26,42 +26,55 @@
                 <!-- ============================================================== -->
 
                 <div class="card row">
+                    
+                         <!-- flash message -->
+
+                         <div class="container ">
+                            <div class="row ">
+                                <div class="col-md-12 mx-auto ">
+                                    
+                                        @include('partials.alerts')
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end flash message -->
                     <div class="card-body col-md-8 mx-auto">
                         
                         <h6 class="card-subtitle"></h6>
-                        <form id="account-form" action="{{ route('profile_edit') }}" class="m-t-40">
+                        <form id="account-form" method="POST" action="{{ route('profile_edit') }}" class="m-t-40">
                             @csrf
-                           @method('PATCH')
+                           @method('PUT')
                                
                            <div class="row">
                             <div class="col-md-6">
                                 <label for="firstname">First name *</label>
-                                <input id="firstname" name="firstname" type="text" value="{{ $user->firstname }}" autocomplete="false" class="form-control" required >
+                                <input id="firstname" name="firstname" type="text" value="{{ $user->firstname }}" autocomplete="false" class="required form-control" disabled >
                             </div>
                             <div class="col-md-6">
                                 <label for="lastname">Last name *</label>
-                              <input id="lastname" name="lastname" type="text" value="{{ $user->lastname }}" autocomplete="false" class="form-control" required >
+                              <input id="lastname" name="lastname" type="text" value="{{ $user->lastname }}" autocomplete="false" class="required form-control" disabled >
                              </div>
 
                         </div>
-                           <div class="row">
+                           
+                        <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="email">Email :</label>
-                                    <input type="email" class="form-control" name="email" id="email"
-                                    value="{{ old('email', $user->email ?? null) }}" 
-                                    placeholder="example@example.com" autocomplete="false" required>
-                         
-                                      </div>
+                                  
+                            <label for="userName">UserName *</label>
+                            <input id="userName" name="userName" type="text" value="{{ $user->username }}"autocomplete="false" class="required  form-control" disabled>
+                            
                                 </div>
-                                </div>
+                            </div>
+                        </div>
                                 
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
                                           
                                     <label for="email">Email *</label>
-                                    <input id="email" name="email" type="text" value="{{ $user->email }}"autocomplete="false" class="required email form-control">
+                                    <input id="email" name="email" type="text" value="{{ $user->email }}"autocomplete="false" class="required email form-control" disabled>
                                     
                                         </div>
                                     </div>
@@ -104,12 +117,10 @@
                                
                         
                                 <div class="row">
-                                    <div class="col-md-6 col-sm-12">
-                                        <button type="submit" class="btn btn-warning btn-sm mt-1" style="width: 100%">Mettre à jour</button>
+                                    <div class="col-md-6 col-sm-12 mx-auto">
+                                        <button type="submit" class="btn btn-warning btn-sm mt-1" style="width: 100%">Update</button>
                                     </div>
-                                    <div class="col-md-6 col-sm-12 mt-1">
-                                        <a href="" class="btn btn-danger btn-sm" style="width: 100%">Retour</a>
-                                    </div>
+                                   
                                    
                                 </div>
                            
@@ -117,58 +128,9 @@
                         </form>
                     </div>
                 </div>
+        
           
-            <!--<div class="card">
-                <form id="account-form" action="{ route('profile_edit') }}" class="form-horizontal">
-
-                <form class="form-horizontal">
-                    <div class="card-body">
-                        <h4 class="card-title">Personal Info</h4>
-                        <div class="form-group row">
-                            <label for="fname" class="col-sm-3 text-right control-label col-form-label">First Name</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="fname" placeholder="First Name Here">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Last Name</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="lname" placeholder="Last Name Here">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">Password</label>
-                            <div class="col-sm-9">
-                                <input type="password" class="form-control" id="lname" placeholder="Password Here">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="email1" class="col-sm-3 text-right control-label col-form-label">Company</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="email1" placeholder="Company Name Here">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Contact No</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="cono1" placeholder="Contact No Here">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Message</label>
-                            <div class="col-sm-9">
-                                <textarea class="form-control"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="border-top">
-                        <div class="card-body">
-                            <button type="button" class="btn btn-primary">Submit</button>
-                        </div>
-                    </div>
-                </form>
             </div>
-            </div>-->
 
  @endsection
 

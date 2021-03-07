@@ -1,6 +1,6 @@
 
-<header class="topbar" data-navbarbg="skin5">
-    <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+<header class="topbar mb-5" data-navbarbg="skin5">
+    <nav class="navbar top-navbar navbar-expand-md navbar-dark ">
         <div class="navbar-header" data-logobg="skin5">
             
             <!-- ============================================================== -->
@@ -94,7 +94,7 @@
                    
                  <li class="nav-item dropdown">
                     <a id="navbarDropdow" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }} <span class="caret"></span>
+                        {{ Auth::user()->username }} <i class="fas fa-arrow-down"></i> <span class="caret"></span>
                     </a>
                   
 

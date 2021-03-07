@@ -25,11 +25,11 @@ Route::get('/admin/dashboard','AdminController@dash')->name('dash');
 
 
 Route::get('/admin/dashboard/settings','AdminController@settings')->name('settings');
-Route::patch('/admin/dashboard/settings','AdminController@profile_edit')->name('profile_edit');
+Route::put('/admin/dashboard/settings','AdminController@profile_edit')->name('profile_edit');
 
 Route::post('/admin/dashboard/check-pwd','AdminController@checkPassword')->name('checkPassword');
 
-
+Route::resource('/admin/dashboard/users','UserController')->middleware(['can:admin.manage']);;
 
 
 //Auth::routes();
