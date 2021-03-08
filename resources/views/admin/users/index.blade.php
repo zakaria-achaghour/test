@@ -90,20 +90,14 @@
 
                                                 <td>
                                                     
-<<<<<<< HEAD
+
                                                     <a href="{{ route('users.edit',['user'=>$user->id]) }}" class="btn btn-outline-warning my-1"><i
                                                         class="fas fa-edit"></i></a>
                                                        
                                                             <a href="javascript:void(0);" class="btn btn-outline-danger deleteUser" data-toggle="modal" data-target="#userConfirm"><i
                                                                 class="fas fa-trash-alt"></i></a>
                                                             
-=======
-                                                    <a href="{{ route('users.edit',['user'=>$user->id]) }}" class="btn btn-outline-warning  "><i
-                                                        class="fas fa-edit"></i></a>
-                                                    <div class="btn btn-outline-danger  my-1"><i
-                                                        class="fas fa-trash-alt"></i></div>
 
->>>>>>> 6c2c9205aafde9a929123a665fc19cede54e1721
                                                 </td>
 
                                             </tr>
@@ -134,7 +128,7 @@
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
 
-<<<<<<< HEAD
+
 
 <!-- Modal -->
 <div class="modal fade" id="userConfirm" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
@@ -165,7 +159,6 @@
 </div>
 
    <!-- Modal -->
-=======
->>>>>>> 6c2c9205aafde9a929123a665fc19cede54e1721
+
             
  @endsection

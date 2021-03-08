@@ -31,11 +31,9 @@
 
             <div class="card row my-2">
                 <div class="card-body col-md-8 mx-auto">
-<<<<<<< HEAD
+
                     <form id="addUserForm"  method="POST" action="{{ route('users.store') }}" >
-=======
-                    <form  method="POST" action="{{ route('users.store') }}" >
->>>>>>> 6c2c9205aafde9a929123a665fc19cede54e1721
+
                         @csrf
                    
                         @include('admin.users._form')
