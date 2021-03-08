@@ -29,9 +29,13 @@ Route::put('/admin/dashboard/settings','AdminController@profile_edit')->name('pr
 
 Route::post('/admin/dashboard/check-pwd','AdminController@checkPassword')->name('checkPassword');
 
+<<<<<<< HEAD
 Route::resource('/admin/dashboard/users','UserController')->except('destroy')->middleware(['can:admin.manage']);
 Route::post('/admin/dashboard/users/delete','UserController@destroy')->name('users.destroy')->middleware(['can:admin.manage']);
 
+=======
+Route::resource('/admin/dashboard/users','UserController')->middleware(['can:admin.manage']);;
+>>>>>>> 6c2c9205aafde9a929123a665fc19cede54e1721
 
 
 //Auth::routes();

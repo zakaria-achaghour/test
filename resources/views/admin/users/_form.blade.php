@@ -38,6 +38,7 @@
     <div class="col-md-9">
         <div class="form-check">
             <input type="radio" class="form-check-input"
+<<<<<<< HEAD
                 id="gender" name="gender" value="male" required  {{ old('gender') == 'male' ? 'checked' : '' }}>
             <label class="form-check-label mb-0" for="gender"  >Male</label>
         </div>
@@ -45,6 +46,15 @@
             <input type="radio" class="form-check-input"
                 id="gender2" name="gender" value="femmel" required {{ old('gender') == 'femmel' ? 'checked' : '' }}>
             <label class="form-check-label mb-0" for="gender2">Femmel</label>
+=======
+                id="customControlValidation1" name="gender" value="male" required @if($user->gender =="male") checked @endif>
+            <label class="form-check-label mb-0" for="customControlValidation1"  >Male</label>
+        </div>
+        <div class="form-check">
+            <input type="radio" class="form-check-input"
+                id="customControlValidation2" name="gender" value="femmel" required @if($user->gender == 'femmel') checked @endif>
+            <label class="form-check-label mb-0" for="customControlValidation2">Femmel</label>
+>>>>>>> 6c2c9205aafde9a929123a665fc19cede54e1721
         </div>
        
     </div>
@@ -52,6 +62,7 @@
 
 
 <div class="form-group row">
+<<<<<<< HEAD
     <label class="col-md-3 mt-3" for="role">Select Role</label>
     <div class="col-md-9">
         <select class="select2 form-select shadow-none" id="role" name="role" {{ (! empty(old('role')) ? 'selected' : '') }}
@@ -61,6 +72,17 @@
                 <option  value="role 2" >Role 2</option>
                 <option value="role 3" >Role 3</option>
                 <option value="role 4" >Role 4</option>           
+=======
+    <label class="col-md-3 mt-3">Select Role</label>
+    <div class="col-md-9">
+        <select class="select2 form-select shadow-none" name="role"
+            style="width: 100%; height:36px;"  >
+            <option>-------------------------</option>
+                <option value="role 1" @if($user->role == "role 1")selected @endif>Role 1</option>
+                <option value="role 2" @if($user->role == "role 2")selected @endif>Role 2</option>
+                <option value="role 3" @if($user->role == "role 3")selected @endif>Role 3</option>
+                <option value="role 4" @if($user->role == "role 4")selected @endif>Role 4</option>           
+>>>>>>> 6c2c9205aafde9a929123a665fc19cede54e1721
         </select>
     </div>
 </div>

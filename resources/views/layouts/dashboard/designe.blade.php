@@ -1,5 +1,5 @@
 <html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -7,12 +7,15 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <meta name="keywords"
+        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Matrix lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Matrix admin lite design, Matrix admin lite dashboard bootstrap 5 dashboard template">
+    <meta name="description"
+        content="Matrix Admin Lite Free Version is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
+    <meta name="robots" content="noindex,nofollow">
+    <title>Matrix Admin Lite Free Versions Template by WrapPixel</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/logo.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/favicon.png')}}">
    
-    
 
 
      <!-- Custom CSS -->
@@ -35,6 +38,7 @@
 </head>
 
 <body>
+   
     @include('layouts.dashboard.preloader')
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
@@ -146,142 +150,6 @@
 <script src="{{ asset('assets/libs/quill/dist/quill.min.js') }}"></script>
 
 <script>
-    /**
- * check password in the front
- */
-$( document ).ready(function() {
-  $("#new_password").focus(function() {
-      var current_password = $("#current_password").val();
-      var token = $('meta[name="csrf-token"]').attr('content');
-      $.ajax({
-          url:"{{ route('checkPassword') }}",
-          method: "POST",
-          dataType: 'JSON',
-          data: {
-              "_method": 'POST',
-              "_token": token,
-              "current_password": current_password,
-           },
-        
-          success: function(response){
-          //   alert(response);
-          
-          var result = $.trim(response);
-              if(result === "true"){
-                
-                  $("#pwdchk").html("<font color='green'>Current Password is correct</font>");
-              }else{
-                
-                  $("#pwdchk").html("<font color='red'>Current Password is incorrect</font>");
-                  
-              }
-          },
-          error:function(){
-              alert("Error");
-          }
-      });
-     
-   });    
-   
-
-
-   /**
-    * form validation user 
-   */
-
-var form_user = $("#addUserForm");
-form_user.validate({
-    errorPlacement: function errorPlacement(error, element) { element.before(error); },
-   
-   rules: {
-       firstname: {
-           required: true,
-           minlength: 3,
-
-
-       },
-       lastname: {
-           required: true,
-           minlength: 3,
-
-
-       },
-       
-       email: {
-            required: true,
-            email: true,
-        },
-
-        gedner: {
-            required: true,
-           },
-
-        contact: {
-            required: true,
-           },
-
-      role: {
-            required: true,
-           },
-
-   }
-});
-
-   
-/**
- * form validation settings page 
- * account form
- */
-     
- var form = $("#account-form");
- form.validate({
-    
-    errorPlacement: function errorPlacement(error, element) { element.before(error); },
-   
-    rules: {
-        username: {
-            required: true,
-            minlength: 3,
-
-
-        },
-        current_password: {
-            required: true,
-            minlength: 8,
-
-
-        },
-        new_password: {
-            required: true,
-            minlength: 8
-
-        },
-
-        confirm_password: {
-            required: true,
-            equalTo: "#new_password"
-        },
-
-        email: {
-             required: true,
-             email: true,
-             disabled:true
-         },
-
-         firstname: {
-             required: true,
-             minlength: 2
-            },
-         lastname: {
-             required: true,
-             minlength: 2
-            }
-    }
-});
-
-  });   
-
-    
        //***********************************//
         // For select 2
         //***********************************//
@@ -320,35 +188,10 @@ form_user.validate({
             todayHighlight: true
         });
        
-
-
-       
-  /**
-   * datatables users initialize
-   */
- 
-     /****************************************
-      *       Basic Table                   *
-      ****************************************/
-     $('#users-table').DataTable();
-
-     // start confirmation delete users table 
-    $('#users-table').on('click','.deleteUser',function(){
-       
-         $tr = $(this).closest('tr');
-         var id = $tr.children("td").map(function() {
-             return $(this).text();
-         }).get();
-         $('#deleteUserid').val(id[0]);
-        
-    });
-
-
-
 </script>
+
+
 <script src="{{ asset('js/app.js') }}"></script>
-
-
 </body>
 
 </html>

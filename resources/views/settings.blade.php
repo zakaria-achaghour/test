@@ -62,8 +62,13 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                   
+<<<<<<< HEAD:resources/views/settings.blade.php
                             <label for="username">UserName *</label>
                             <input id="username" name="username" type="text" value="{{ $user->username }}"autocomplete="false" class="required  form-control" disabled>
+=======
+                            <label for="userName">UserName *</label>
+                            <input id="userName" name="userName" type="text" value="{{ $user->username }}"autocomplete="false" class="required  form-control" disabled>
+>>>>>>> 6c2c9205aafde9a929123a665fc19cede54e1721:resources/views/admin/settings.blade.php
                             
                                 </div>
                             </div>
